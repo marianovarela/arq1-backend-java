@@ -1,0 +1,9 @@
+## Abrir desde la consola
+mysql --user=root --password=root mysql
+
+
+CREATE USER 'ttacuser'@'localhost' IDENTIFIED BY 'ttacpass';
+CREATE DATABASE ttac;
+GRANT ALL PRIVILEGES ON *.* TO 'ttacuser'@'localhost' WITH GRANT OPTION;
+
+
