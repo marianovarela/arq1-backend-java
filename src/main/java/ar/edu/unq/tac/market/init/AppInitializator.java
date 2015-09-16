@@ -8,7 +8,7 @@ import javax.annotation.PostConstruct;
 @Component
 public class AppInitializator {
     
-    public static boolean CREATE = false;
+    public static boolean CREATE = true;
 
     @Autowired
     private InitDatabase applicationDataInit;

@@ -21,7 +21,7 @@ public class InitDatabase {
     public void createData(){
     	events.create();
     	
-    	List<Event> eventList = events.getScoreAsList();
+    	List<Event> eventList = events.getEventAsList();
     	
     	eventRepository.save(eventList);
     }

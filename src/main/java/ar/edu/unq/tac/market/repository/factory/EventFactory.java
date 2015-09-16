@@ -14,25 +14,18 @@ public class EventFactory extends EntityFactory{
 
 	 private Map<Integer, Event> events;
 	    
-	    public String schema[] = {"id", "score", "game", "name"};
+	    public String schema[] = {"id", "name", "place"};
 	    
-	    private String scores_array[] = {
+	    private String events_array[] = {
 	        /** | id  | tacId  | game | name   | */
 	        /** | int | string | Game | string | */
 
-	        " 1, 5, HEXTRIS, Player",
-	        " 2, 25, HEXTRIS, Player",
-	        " 3, 100, HEXTRIS, Player",
-	        " 4, 5000, CHAIN_REACTION, Player",
-	        " 5, 10000, CHAIN_REACTION, Player",
-	        " 6, 15000, CHAIN_REACTION, Player",
-	        " 7, 20000, CHAIN_REACTION, Player",
-	        " 8, 25000, CHAIN_REACTION, Player",
-	        " 9, 30000, CHAIN_REACTION, Player",
-	        " 10, 35000, CHAIN_REACTION, Player",
-	        " 11, 40000, CHAIN_REACTION, Player",
-	        " 12, 45000, CHAIN_REACTION, Player",
-	        " 13, 50000, CHAIN_REACTION, Player"};
+	        " 1, Juntada, Quilmes",
+	        " 2, Reunion, Capital",
+	        " 3, asado, El tano",
+	        " 4, pizza, Los tres ases",
+	        " 5, cumpleaños, mi casa",
+	        " 6, nos juntamos, en algun lado"};
 	    
 	    protected String[] getSchema() {
 	        return schema;
@@ -40,10 +33,10 @@ public class EventFactory extends EntityFactory{
 	    
 	    public EventFactory create() {
 	        events = new TreeMap<Integer, Event>();
-	        for (int i = 0; i < scores_array.length; i++) {
-	            String splittedScore[] = splitArray(scores_array[i]);
-	            Integer constructionId = Integer.valueOf(findValue(splittedScore, "id"));
-	            Event event = fromString(splittedScore);
+	        for (int i = 0; i < events_array.length; i++) {
+	            String splittedEvent[] = splitArray(events_array[i]);
+	            Integer constructionId = Integer.valueOf(findValue(splittedEvent, "id"));
+	            Event event = fromString(splittedEvent);
 	            events.put(constructionId, event);
 	        }
 	        return this;
@@ -51,16 +44,17 @@ public class EventFactory extends EntityFactory{
 
 	    private Event fromString(String[] splittedScore) {
 	    	Event event = new Event();
-	    	Integer points = Integer.valueOf(findValue(splittedScore, "score"));
 	        String name = String.valueOf(findValue(splittedScore, "name"));
 	        event.setName(name);
+	        String place = String.valueOf(findValue(splittedScore, "place"));
+	        event.setPlace(place);
 	        return event;
 	    }
 	    
-	    public List<Event> getScoreAsList() {
-	        List<Event> scoreList = new LinkedList<Event>();
-	        scoreList.addAll(events.values());
-	        return scoreList;
+	    public List<Event> getEventAsList() {
+	        List<Event> eventList = new LinkedList<Event>();
+	        eventList.addAll(events.values());
+	        return eventList;
 	    }
 
 	    public Map<Integer, Event> getTacConfig() {
